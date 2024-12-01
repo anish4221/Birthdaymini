@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Wall</title>
+    <style>
+        /* General styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fff3f3, #ffb3b3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .header {
+            font-size: 2.5rem;
+            color: #ff5c8d;
+            margin-bottom: 20px;
+        }
+
+        .memory-wall {
+            width: 80%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            height: 300px;
+        }
+
+        .message {
+            background: #ffccd9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ff5c8d;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #ff5c8d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3b6b;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #ff758c;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background: #ff3b6b;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        🌟 Memory Wall 🌟
+    </div>
+
+    <!-- Memory Wall to display messages (initially empty) -->
+    <div class="memory-wall" id="message-wall">
+        <!-- No default messages, new messages will be added here -->
+    </div>
+
+    <!-- Form to add new message -->
+    <div class="form-container">
+        <input type="text" id="name" placeholder="Your Name" />
+        <textarea id="message" rows="4" placeholder="Your message..."></textarea>
+        <button onclick="addMessage()">Add Message</button>
+    </div>
+
+    <!-- Back Button -->
+    <a href="Birthday.html" class="back-button">Back to Main Page</a>
+
+    <script>
+        function addMessage() {
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            if (name && message) {
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message');
+                newMessage.innerHTML = `<strong>${name}:</strong> ${message}`;
+
+                document.getElementById('message-wall').appendChild(newMessage);
+
+                // Clear the form
+                document.getElementById('name').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+    </script>
+</body>
+</html>
+
